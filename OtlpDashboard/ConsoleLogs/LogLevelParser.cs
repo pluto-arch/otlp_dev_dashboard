@@ -3,7 +3,7 @@
 
 using System.Text.RegularExpressions;
 
-namespace Dotnetydd.OtlpDashboard.ConsoleLogs;
+namespace Dotnetydd.OtlpDevDashboard.ConsoleLogs;
 
 public static partial class LogLevelParser
 {

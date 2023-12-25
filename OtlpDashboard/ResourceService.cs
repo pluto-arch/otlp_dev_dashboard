@@ -1,10 +1,10 @@
-﻿using Dotnetydd.OtlpDashboard.ApplicationModels;
-using Dotnetydd.OtlpDashboard.Model;
-using Dotnetydd.OtlpDashboard.Publisher;
+﻿using Dotnetydd.OtlpDevDashboard.ApplicationModels;
+using Dotnetydd.OtlpDevDashboard.Model;
+using Dotnetydd.OtlpDevDashboard.Publisher;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Dotnetydd.OtlpDashboard;
+namespace Dotnetydd.OtlpDevDashboard;
 
 public class ApplicationResourceService: IResourceService, IAsyncDisposable
 {

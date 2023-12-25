@@ -5,7 +5,7 @@ using System.Collections;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Storage;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Storage;
 
 /// <summary>
 /// The circular buffer starts with an empty list and grows to a maximum size.

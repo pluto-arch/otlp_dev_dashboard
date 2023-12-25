@@ -4,7 +4,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Model;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Model;
 
 public static class OtlpUnits
 {

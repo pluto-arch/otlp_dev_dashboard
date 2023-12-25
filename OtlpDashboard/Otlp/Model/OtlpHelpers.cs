@@ -5,13 +5,13 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Dotnetydd.OtlpDashboard.Otlp.Storage;
+using Dotnetydd.OtlpDevDashboard.Otlp.Storage;
 using Google.Protobuf;
 using Google.Protobuf.Collections;
 using OpenTelemetry.Proto.Common.V1;
 using OpenTelemetry.Proto.Resource.V1;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Model;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Model;
 
 public static class OtlpHelpers
 {

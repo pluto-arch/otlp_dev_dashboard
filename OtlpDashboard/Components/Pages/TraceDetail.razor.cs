@@ -2,14 +2,14 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Diagnostics;
-using Dotnetydd.OtlpDashboard.Model;
-using Dotnetydd.OtlpDashboard.Model.Otlp;
-using Dotnetydd.OtlpDashboard.Otlp.Model;
-using Dotnetydd.OtlpDashboard.Otlp.Storage;
+using Dotnetydd.OtlpDevDashboard.Model;
+using Dotnetydd.OtlpDevDashboard.Model.Otlp;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Storage;
 using Microsoft.AspNetCore.Components;
 using Microsoft.FluentUI.AspNetCore.Components;
 
-namespace Dotnetydd.OtlpDashboard.Components.Pages;
+namespace Dotnetydd.OtlpDevDashboard.Components.Pages;
 
 public partial class TraceDetail : ComponentBase
 {

@@ -4,10 +4,10 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using Dotnetydd.OtlpDashboard.Otlp.Model;
-using Dotnetydd.OtlpDashboard.Utils;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model;
+using Dotnetydd.OtlpDevDashboard.Utils;
 
-namespace Dotnetydd.OtlpDashboard.Model;
+namespace Dotnetydd.OtlpDevDashboard.Model;
 
 public sealed class ResourceOutgoingPeerResolver : IOutgoingPeerResolver, IAsyncDisposable
 {

@@ -4,7 +4,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Dotnetydd.OtlpDashboard.ConsoleLogs;
+namespace Dotnetydd.OtlpDevDashboard.ConsoleLogs;
 public static partial class TimestampParser
 {
     public const string DisplayFormat = "yyyy-MM-ddTHH:mm:ss.fffffff";

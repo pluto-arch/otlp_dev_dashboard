@@ -4,7 +4,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Model.MetricValues;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Model.MetricValues;
 
 public class HistogramValue : MetricValueBase
 {

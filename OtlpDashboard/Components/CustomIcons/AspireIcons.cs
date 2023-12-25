@@ -3,7 +3,7 @@
 
 using Microsoft.FluentUI.AspNetCore.Components;
 
-namespace Dotnetydd.OtlpDashboard.Components.CustomIcons;
+namespace Dotnetydd.OtlpDevDashboard.Components.CustomIcons;
 
 internal static class AspireIcons
 {

@@ -2,9 +2,9 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Diagnostics;
-using Dotnetydd.OtlpDashboard.Extensions;
+using Dotnetydd.OtlpDevDashboard.Extensions;
 
-namespace Dotnetydd.OtlpDashboard.Model;
+namespace Dotnetydd.OtlpDevDashboard.Model;
 
 public class CounterChartViewModel
 {

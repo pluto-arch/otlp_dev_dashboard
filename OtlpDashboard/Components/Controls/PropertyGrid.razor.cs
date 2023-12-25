@@ -4,7 +4,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.FluentUI.AspNetCore.Components;
 
-namespace Dotnetydd.OtlpDashboard.Components.Controls;
+namespace Dotnetydd.OtlpDevDashboard.Components.Controls;
 
 public partial class PropertyGrid<TItem>
 {

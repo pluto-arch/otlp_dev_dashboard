@@ -1,15 +1,15 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Dotnetydd.OtlpDashboard.Otlp.Model;
-using Dotnetydd.OtlpDashboard.Otlp.Storage;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Storage;
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
 using OpenTelemetry.Proto.Collector.Logs.V1;
 using OpenTelemetry.Proto.Resource.V1;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Grpc;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Grpc;
 
 public class OtlpLogsService : LogsService.LogsServiceBase
 {

@@ -2,9 +2,9 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Net;
-using Dotnetydd.OtlpDashboard.Model;
+using Dotnetydd.OtlpDevDashboard.Model;
 
-namespace Dotnetydd.OtlpDashboard.ConsoleLogs;
+namespace Dotnetydd.OtlpDevDashboard.ConsoleLogs;
 
 internal sealed partial class LogParser(bool convertTimestampsFromUtc)
 {

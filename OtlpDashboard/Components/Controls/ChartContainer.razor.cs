@@ -1,14 +1,14 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Dotnetydd.OtlpDashboard.Model;
-using Dotnetydd.OtlpDashboard.Otlp.Model;
-using Dotnetydd.OtlpDashboard.Otlp.Model.MetricValues;
-using Dotnetydd.OtlpDashboard.Otlp.Storage;
+using Dotnetydd.OtlpDevDashboard.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model.MetricValues;
+using Dotnetydd.OtlpDevDashboard.Otlp.Storage;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
 
-namespace Dotnetydd.OtlpDashboard.Components;
+namespace Dotnetydd.OtlpDevDashboard.Components;
 
 public partial class ChartContainer : ComponentBase, IAsyncDisposable
 {

@@ -3,7 +3,7 @@
 
 using System.Text.Json.Serialization;
 
-namespace Dotnetydd.OtlpDashboard.Model;
+namespace Dotnetydd.OtlpDevDashboard.Model;
 
 internal sealed partial class LogEntry
 {

@@ -3,7 +3,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace Dotnetydd.OtlpDashboard.Model.Otlp;
+namespace Dotnetydd.OtlpDevDashboard.Model.Otlp;
 
 public class LogDialogFormModel
 {

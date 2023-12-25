@@ -3,7 +3,7 @@
 
 using System.Collections.ObjectModel;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Model;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Model;
 
 public sealed class OtlpTraceCollection : KeyedCollection<ReadOnlyMemory<byte>, OtlpTrace>
 {

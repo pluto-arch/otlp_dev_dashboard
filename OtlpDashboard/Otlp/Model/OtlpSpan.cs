@@ -3,7 +3,7 @@
 
 using System.Diagnostics;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Model;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Model;
 
 /// <summary>
 /// Represents a Span within an Operation (Trace)

@@ -1,14 +1,14 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Dotnetydd.OtlpDashboard.Model;
-using Dotnetydd.OtlpDashboard.Model.Otlp;
-using Dotnetydd.OtlpDashboard.Otlp.Storage;
+using Dotnetydd.OtlpDevDashboard.Model;
+using Dotnetydd.OtlpDevDashboard.Model.Otlp;
+using Dotnetydd.OtlpDevDashboard.Otlp.Storage;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.FluentUI.AspNetCore.Components;
 
-namespace Dotnetydd.OtlpDashboard.Components.Dialogs;
+namespace Dotnetydd.OtlpDevDashboard.Components.Dialogs;
 
 public partial class FilterDialog
 {

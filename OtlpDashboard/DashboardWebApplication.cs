@@ -2,11 +2,11 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Net;
-using Dotnetydd.OtlpDashboard.Components;
-using Dotnetydd.OtlpDashboard.Model;
-using Dotnetydd.OtlpDashboard.Otlp.Grpc;
-using Dotnetydd.OtlpDashboard.Otlp.Model;
-using Dotnetydd.OtlpDashboard.Otlp.Storage;
+using Dotnetydd.OtlpDevDashboard.Components;
+using Dotnetydd.OtlpDevDashboard.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Grpc;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Storage;
 using Google.Protobuf.Collections;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,7 +21,7 @@ using OpenTelemetry.Proto.Common.V1;
 using OpenTelemetry.Proto.Metrics.V1;
 using OpenTelemetry.Proto.Resource.V1;
 
-namespace Dotnetydd.OtlpDashboard;
+namespace Dotnetydd.OtlpDevDashboard;
 
 public class DashboardWebApplication : IHostedService
 {

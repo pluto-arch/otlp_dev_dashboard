@@ -1,13 +1,13 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Dotnetydd.OtlpDashboard.Extensions;
-using Dotnetydd.OtlpDashboard.Model;
+using Dotnetydd.OtlpDevDashboard.Extensions;
+using Dotnetydd.OtlpDevDashboard.Model;
 using Microsoft.AspNetCore.Components;
 using Microsoft.FluentUI.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Dotnetydd.OtlpDashboard.Components.Dialogs;
+namespace Dotnetydd.OtlpDevDashboard.Components.Dialogs;
 
 public partial class SettingsDialog : IDialogContentComponent, IAsyncDisposable
 {
@@ -41,7 +41,7 @@ public partial class SettingsDialog : IDialogContentComponent, IAsyncDisposable
     {
         if (firstRender)
         {
-            _jsModule = await JS.InvokeAsync<IJSObjectReference>("import", "/_content/Dotnetydd.OtlpDashboard/js/theme.js");
+            _jsModule = await JS.InvokeAsync<IJSObjectReference>("import", "/_content/Dotnetydd.OtlpDevDashboard/js/theme.js");
             _currentSetting = await _jsModule.InvokeAsync<string>("getThemeCookieValue");
             StateHasChanged();
         }

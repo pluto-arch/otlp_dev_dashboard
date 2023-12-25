@@ -2,14 +2,14 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Diagnostics;
-using Dotnetydd.OtlpDashboard.Model;
+using Dotnetydd.OtlpDevDashboard.Model;
 using Google.Protobuf.Collections;
 using Microsoft.Extensions.Logging;
 using OpenTelemetry.Proto.Common.V1;
 using OpenTelemetry.Proto.Metrics.V1;
 using OpenTelemetry.Proto.Resource.V1;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Model;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Model;
 
 [DebuggerDisplay("ApplicationName = {ApplicationName}, InstanceId = {InstanceId}")]
 public class OtlpApplication

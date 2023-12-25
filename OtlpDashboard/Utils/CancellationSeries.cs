@@ -1,7 +1,7 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-namespace Dotnetydd.OtlpDashboard.Utils;
+namespace Dotnetydd.OtlpDevDashboard.Utils;
 
 /// <summary>
 /// Produces a series of <see cref="CancellationToken"/>s that are used to coordinate

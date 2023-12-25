@@ -1,15 +1,15 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Dotnetydd.OtlpDashboard.Model;
-using Dotnetydd.OtlpDashboard.Model.Otlp;
-using Dotnetydd.OtlpDashboard.Otlp.Model;
-using Dotnetydd.OtlpDashboard.Otlp.Storage;
+using Dotnetydd.OtlpDevDashboard.Model;
+using Dotnetydd.OtlpDevDashboard.Model.Otlp;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Storage;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Microsoft.FluentUI.AspNetCore.Components;
 
-namespace Dotnetydd.OtlpDashboard.Components.Pages;
+namespace Dotnetydd.OtlpDevDashboard.Components.Pages;
 
 public partial class Metrics : IDisposable
 {
@@ -59,15 +59,15 @@ public partial class Metrics : IDisposable
     {
         _durations = new List<SelectViewModel<TimeSpan>>
         {
-            new() { Name = Loc[nameof(OtlpDashboard.Resources.Metrics.MetricsLastOneMinute)], Id = TimeSpan.FromMinutes(1) },
-            new() { Name = Loc[nameof(OtlpDashboard.Resources.Metrics.MetricsLastFiveMinutes)], Id = TimeSpan.FromMinutes(5) },
-            new() { Name = Loc[nameof(OtlpDashboard.Resources.Metrics.MetricsLastFifteenMinutes)], Id = TimeSpan.FromMinutes(15) },
-            new() { Name = Loc[nameof(OtlpDashboard.Resources.Metrics.MetricsLastThirtyMinutes)], Id = TimeSpan.FromMinutes(30) },
-            new() { Name = Loc[nameof(OtlpDashboard.Resources.Metrics.MetricsLastHour)], Id = TimeSpan.FromHours(1) },
-            new() { Name = Loc[nameof(OtlpDashboard.Resources.Metrics.MetricsLastThreeHours)], Id = TimeSpan.FromHours(3) },
-            new() { Name = Loc[nameof(OtlpDashboard.Resources.Metrics.MetricsLastSixHours)], Id = TimeSpan.FromHours(6) },
-            new() { Name = Loc[nameof(OtlpDashboard.Resources.Metrics.MetricsLastTwelveHours)], Id = TimeSpan.FromHours(12) },
-            new() { Name = Loc[nameof(OtlpDashboard.Resources.Metrics.MetricsLastTwentyFourHours)], Id = TimeSpan.FromHours(24) },
+            new() { Name = Loc[nameof(OtlpDevDashboard.Resources.Metrics.MetricsLastOneMinute)], Id = TimeSpan.FromMinutes(1) },
+            new() { Name = Loc[nameof(OtlpDevDashboard.Resources.Metrics.MetricsLastFiveMinutes)], Id = TimeSpan.FromMinutes(5) },
+            new() { Name = Loc[nameof(OtlpDevDashboard.Resources.Metrics.MetricsLastFifteenMinutes)], Id = TimeSpan.FromMinutes(15) },
+            new() { Name = Loc[nameof(OtlpDevDashboard.Resources.Metrics.MetricsLastThirtyMinutes)], Id = TimeSpan.FromMinutes(30) },
+            new() { Name = Loc[nameof(OtlpDevDashboard.Resources.Metrics.MetricsLastHour)], Id = TimeSpan.FromHours(1) },
+            new() { Name = Loc[nameof(OtlpDevDashboard.Resources.Metrics.MetricsLastThreeHours)], Id = TimeSpan.FromHours(3) },
+            new() { Name = Loc[nameof(OtlpDevDashboard.Resources.Metrics.MetricsLastSixHours)], Id = TimeSpan.FromHours(6) },
+            new() { Name = Loc[nameof(OtlpDevDashboard.Resources.Metrics.MetricsLastTwelveHours)], Id = TimeSpan.FromHours(12) },
+            new() { Name = Loc[nameof(OtlpDevDashboard.Resources.Metrics.MetricsLastTwentyFourHours)], Id = TimeSpan.FromHours(24) },
         };
 
         _selectedDuration = _durations.Single(d => d.Id == s_defaultDuration);

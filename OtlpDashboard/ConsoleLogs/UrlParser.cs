@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Dotnetydd.OtlpDashboard.ConsoleLogs;
+namespace Dotnetydd.OtlpDevDashboard.ConsoleLogs;
 public static partial class UrlParser
 {
     private static readonly Regex s_urlRegEx = GenerateUrlRegEx();

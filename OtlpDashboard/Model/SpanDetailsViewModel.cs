@@ -1,9 +1,9 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Dotnetydd.OtlpDashboard.Otlp.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model;
 
-namespace Dotnetydd.OtlpDashboard.Model;
+namespace Dotnetydd.OtlpDevDashboard.Model;
 
 public sealed class SpanDetailsViewModel
 {

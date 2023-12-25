@@ -3,7 +3,7 @@
 
 using OpenTelemetry.Proto.Common.V1;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Model;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Model;
 
 /// <summary>
 /// The Scope of a TraceSource, maps to the name of the ActivitySource in .NET

@@ -1,17 +1,17 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Dotnetydd.OtlpDashboard.Components.Dialogs;
-using Dotnetydd.OtlpDashboard.Model;
-using Dotnetydd.OtlpDashboard.Model.Otlp;
-using Dotnetydd.OtlpDashboard.Otlp.Model;
-using Dotnetydd.OtlpDashboard.Otlp.Storage;
+using Dotnetydd.OtlpDevDashboard.Components.Dialogs;
+using Dotnetydd.OtlpDevDashboard.Model;
+using Dotnetydd.OtlpDevDashboard.Model.Otlp;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Storage;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
 using Microsoft.FluentUI.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Dotnetydd.OtlpDashboard.Components.Pages;
+namespace Dotnetydd.OtlpDevDashboard.Components.Pages;
 
 public partial class StructuredLogs
 {
@@ -85,7 +85,7 @@ public partial class StructuredLogs
 
         _logLevels = new List<SelectViewModel<LogLevel?>>
         {
-            new SelectViewModel<LogLevel?> { Id = null, Name = $"({Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsAllTypes)]})" },
+            new SelectViewModel<LogLevel?> { Id = null, Name = $"({Loc[nameof(OtlpDevDashboard.Resources.StructuredLogs.StructuredLogsAllTypes)]})" },
             new SelectViewModel<LogLevel?> { Id = LogLevel.Trace, Name = "Trace" },
             new SelectViewModel<LogLevel?> { Id = LogLevel.Debug, Name = "Debug" },
             new SelectViewModel<LogLevel?> { Id = LogLevel.Information, Name = "Information" },
@@ -185,7 +185,7 @@ public partial class StructuredLogs
     {
         var logPropertyKeys = TelemetryRepository.GetLogPropertyKeys(_selectedApplication.Id);
 
-        var title = entry is not null ? Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsEditFilter)] : Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsAddFilter)];
+        var title = entry is not null ? Loc[nameof(OtlpDevDashboard.Resources.StructuredLogs.StructuredLogsEditFilter)] : Loc[nameof(OtlpDevDashboard.Resources.StructuredLogs.StructuredLogsAddFilter)];
         var parameters = new DialogParameters
         {
             OnDialogResult = DialogService.CreateDialogCallback(this, HandleFilterDialog),

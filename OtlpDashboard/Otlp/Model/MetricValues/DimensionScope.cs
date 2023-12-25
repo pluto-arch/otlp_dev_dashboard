@@ -4,7 +4,7 @@
 using System.Diagnostics;
 using OpenTelemetry.Proto.Metrics.V1;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Model.MetricValues;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Model.MetricValues;
 
 [DebuggerDisplay("Name = {Name}, Values = {Values.Count}")]
 public class DimensionScope

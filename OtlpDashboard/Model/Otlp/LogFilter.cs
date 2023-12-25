@@ -3,10 +3,10 @@
 
 using System.Diagnostics;
 using System.Globalization;
-using Dotnetydd.OtlpDashboard.Otlp.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model;
 using Microsoft.Extensions.Logging;
 
-namespace Dotnetydd.OtlpDashboard.Model.Otlp;
+namespace Dotnetydd.OtlpDevDashboard.Model.Otlp;
 
 [DebuggerDisplay("{FilterText,nq}")]
 public class LogFilter

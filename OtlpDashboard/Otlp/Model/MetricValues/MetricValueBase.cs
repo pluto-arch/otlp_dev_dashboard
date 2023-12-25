@@ -3,7 +3,7 @@
 
 using System.Diagnostics;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Model.MetricValues;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Model.MetricValues;
 
 [DebuggerDisplay("Start = {Start}, End = {End}")]
 public abstract class MetricValueBase

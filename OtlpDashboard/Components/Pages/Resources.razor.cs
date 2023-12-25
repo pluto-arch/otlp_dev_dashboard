@@ -4,14 +4,14 @@
 using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using System.Diagnostics;
-using Dotnetydd.OtlpDashboard.Model;
-using Dotnetydd.OtlpDashboard.Otlp.Model;
-using Dotnetydd.OtlpDashboard.Otlp.Storage;
-using Dotnetydd.OtlpDashboard.Utils;
+using Dotnetydd.OtlpDevDashboard.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Storage;
+using Dotnetydd.OtlpDevDashboard.Utils;
 using Microsoft.AspNetCore.Components;
 using Microsoft.FluentUI.AspNetCore.Components;
 
-namespace Dotnetydd.OtlpDashboard.Components.Pages;
+namespace Dotnetydd.OtlpDevDashboard.Components.Pages;
 
 public partial class Resources : ComponentBase, IDisposable
 {

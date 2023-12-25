@@ -4,7 +4,7 @@
 using System.Diagnostics;
 using OpenTelemetry.Proto.Common.V1;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Model;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Model;
 
 [DebuggerDisplay("MeterName = {MeterName}")]
 public class OtlpMeter

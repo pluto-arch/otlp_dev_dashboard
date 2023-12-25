@@ -1,5 +1,5 @@
-using Dotnetydd.OtlpDashboard;
-using Dotnetydd.OtlpDashboard.Model;
+using Dotnetydd.OtlpDevDashboard;
+using Dotnetydd.OtlpDevDashboard.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 

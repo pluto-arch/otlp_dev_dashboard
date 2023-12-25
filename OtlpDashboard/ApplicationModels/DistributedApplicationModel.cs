@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Dotnetydd.OtlpDashboard.ApplicationModels;
+namespace Dotnetydd.OtlpDevDashboard.ApplicationModels;
 
 
 [DebuggerDisplay("Name = {Name}, Resources = {Resources.Count}")]

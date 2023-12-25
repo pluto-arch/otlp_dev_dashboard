@@ -3,7 +3,7 @@
 
 using System.Diagnostics;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Model;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Model;
 
 [DebuggerDisplay("{DebuggerToString(),nq}")]
 public class OtlpTrace

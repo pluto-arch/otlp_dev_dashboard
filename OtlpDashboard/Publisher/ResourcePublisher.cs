@@ -1,9 +1,9 @@
-﻿using Dotnetydd.OtlpDashboard.Model;
+﻿using Dotnetydd.OtlpDevDashboard.Model;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Channels;
 
-namespace Dotnetydd.OtlpDashboard.Publisher;
+namespace Dotnetydd.OtlpDevDashboard.Publisher;
 
 public sealed class ApplicationResourcePublisher(CancellationToken cancellationToken)
 {

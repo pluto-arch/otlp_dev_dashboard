@@ -3,15 +3,15 @@
 @page "/Metrics/{applicationInstanceId}/Meter/{meterName}"
 @page "/Metrics/{applicationInstanceId}/Meter/{meterName}/Instrument/{instrumentName}"
 
-@using Dotnetydd.OtlpDashboard.Model.Otlp
-@using Dotnetydd.OtlpDashboard.Resources
-@inject IStringLocalizer<OtlpDashboard.Resources.Metrics> Loc
+@using Dotnetydd.OtlpDevDashboard.Model.Otlp
+@using Dotnetydd.OtlpDevDashboard.Resources
+@inject IStringLocalizer<OtlpDevDashboard.Resources.Metrics> Loc
 @inject IStringLocalizer<ControlsStrings> ControlsStringsLoc
 
-<PageTitle>@string.Format(Loc[nameof(OtlpDashboard.Resources.Metrics.MetricsPageTitle)], ResourceService.ApplicationName)</PageTitle>
+<PageTitle>@string.Format(Loc[nameof(OtlpDevDashboard.Resources.Metrics.MetricsPageTitle)], ResourceService.ApplicationName)</PageTitle>
 
 <div class="metrics-layout">
-        <h1 class="page-header">@Loc[nameof(OtlpDashboard.Resources.Metrics.MetricsHeader)]</h1>
+        <h1 class="page-header">@Loc[nameof(OtlpDevDashboard.Resources.Metrics.MetricsHeader)]</h1>
     <FluentToolbar Orientation="Orientation.Horizontal">
         <FluentSelect TOption="SelectViewModel<string>"
                       Items="@_applications"
@@ -25,7 +25,7 @@
                       OptionText="@(c => c.Name)"
                       @bind-SelectedOption="_selectedDuration"
                       @bind-SelectedOption:after="HandleSelectedDurationChangedAsync"
-                      AriaLabel="@Loc[nameof(OtlpDashboard.Resources.Metrics.MetricsSelectADuration)]" />
+                      AriaLabel="@Loc[nameof(OtlpDevDashboard.Resources.Metrics.MetricsSelectADuration)]" />
     </FluentToolbar>
     <div class="page-content-area">
         @if (_instruments?.Count > 0)
@@ -70,7 +70,7 @@
                         }
                         else
                         {
-                            <p>@Loc[nameof(OtlpDashboard.Resources.Metrics.MetricsSelectInstrument)]</p>
+                            <p>@Loc[nameof(OtlpDevDashboard.Resources.Metrics.MetricsSelectInstrument)]</p>
                         }
                     </div>
                 </Panel2>
@@ -79,13 +79,13 @@
         else if (_instruments == null)
         {
             <div class="empty-content">
-                <FluentIcon Icon="Icons.Regular.Size24.ChartMultiple" />&nbsp;@Loc[nameof(OtlpDashboard.Resources.Metrics.MetricsSelectAResource)]
+                <FluentIcon Icon="Icons.Regular.Size24.ChartMultiple" />&nbsp;@Loc[nameof(OtlpDevDashboard.Resources.Metrics.MetricsSelectAResource)]
             </div>
         }
         else
         {
             <div class="empty-content">
-                <FluentIcon Icon="Icons.Regular.Size24.ChartMultiple" />&nbsp;@Loc[nameof(OtlpDashboard.Resources.Metrics.MetricsNoMetricsForResource)]
+                <FluentIcon Icon="Icons.Regular.Size24.ChartMultiple" />&nbsp;@Loc[nameof(OtlpDevDashboard.Resources.Metrics.MetricsNoMetricsForResource)]
             </div>
         }
     </div>

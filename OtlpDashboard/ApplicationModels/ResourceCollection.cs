@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Collections;
 
-namespace Dotnetydd.OtlpDashboard.ApplicationModels;
+namespace Dotnetydd.OtlpDevDashboard.ApplicationModels;
 
 [DebuggerDisplay("Count = {Count}")]
 [DebuggerTypeProxy(typeof(ApplicationResourceCollectionDebugView))]

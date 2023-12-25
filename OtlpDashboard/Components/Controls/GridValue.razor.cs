@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.FluentUI.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Dotnetydd.OtlpDashboard.Components.Controls;
+namespace Dotnetydd.OtlpDevDashboard.Components.Controls;
 
 public partial class GridValue
 {

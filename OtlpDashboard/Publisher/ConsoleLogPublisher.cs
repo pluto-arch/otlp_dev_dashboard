@@ -1,7 +1,7 @@
-﻿using Dotnetydd.OtlpDashboard.DataSource;
-using Dotnetydd.OtlpDashboard.Model;
+﻿using Dotnetydd.OtlpDevDashboard.DataSource;
+using Dotnetydd.OtlpDevDashboard.Model;
 
-namespace Dotnetydd.OtlpDashboard.Publisher;
+namespace Dotnetydd.OtlpDevDashboard.Publisher;
 
 public class ConsoleLogPublisher(ApplicationResourcePublisher resourcePublisher)
 {

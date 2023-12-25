@@ -10,7 +10,7 @@ app.MapGet("/", async () =>
 {
     using (var httpclient = new HttpClient())
     {
-        await httpclient.GetAsync("http://localhost:5049/todo");
+        await httpclient.GetAsync("http://localhost:7891/todo");
     }
     return Results.Ok("aaa");
 });

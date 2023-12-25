@@ -3,9 +3,9 @@ using System.IO.Pipelines;
 using System.Text.RegularExpressions;
 using System.Text;
 using System.Threading.Channels;
-using Dotnetydd.OtlpDashboard.Extensions;
+using Dotnetydd.OtlpDevDashboard.Extensions;
 
-namespace Dotnetydd.OtlpDashboard.DataSource;
+namespace Dotnetydd.OtlpDevDashboard.DataSource;
 
 public sealed partial class FileLogSource(string stdOutPath, string stdErrPath) : IAsyncEnumerable<IReadOnlyList<(string Content, bool IsErrorMessage)>>
 {

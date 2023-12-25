@@ -3,7 +3,7 @@
 
 using System.Collections.Immutable;
 
-namespace Dotnetydd.OtlpDashboard.Model;
+namespace Dotnetydd.OtlpDevDashboard.Model;
 
 /// <summary>
 /// Immutable snapshot of executable state at a point in time.

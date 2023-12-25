@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace Dotnetydd.OtlpDashboard.ApplicationModels;
+namespace Dotnetydd.OtlpDevDashboard.ApplicationModels;
 
 /// <summary>
 /// Represents a collection of resource metadata annotations.

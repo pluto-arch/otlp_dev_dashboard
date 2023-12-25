@@ -4,7 +4,7 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using Dotnetydd.OtlpDashboard.Otlp.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model;
 using Google.Protobuf.Collections;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -14,7 +14,7 @@ using OpenTelemetry.Proto.Resource.V1;
 using OpenTelemetry.Proto.Trace.V1;
 using static OpenTelemetry.Proto.Trace.V1.Span.Types;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Storage;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Storage;
 
 public class TelemetryRepository
 {

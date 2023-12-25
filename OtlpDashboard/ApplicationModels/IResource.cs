@@ -1,4 +1,4 @@
-﻿namespace Dotnetydd.OtlpDashboard.ApplicationModels;
+﻿namespace Dotnetydd.OtlpDevDashboard.ApplicationModels;
 
 public interface IResource
 {

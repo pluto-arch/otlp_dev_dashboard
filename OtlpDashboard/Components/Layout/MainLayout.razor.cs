@@ -1,14 +1,14 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Dotnetydd.OtlpDashboard.Components.Dialogs;
-using Dotnetydd.OtlpDashboard.Model;
+using Dotnetydd.OtlpDevDashboard.Components.Dialogs;
+using Dotnetydd.OtlpDevDashboard.Model;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using Microsoft.FluentUI.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Dotnetydd.OtlpDashboard.Components.Layout;
+namespace Dotnetydd.OtlpDevDashboard.Components.Layout;
 
 public partial class MainLayout : IDisposable
 {
@@ -83,7 +83,7 @@ public partial class MainLayout : IDisposable
     {
         if (firstRender)
         {
-            _jsModule = await JS.InvokeAsync<IJSObjectReference>("import", "/_content/Dotnetydd.OtlpDashboard/js/theme.js");
+            _jsModule = await JS.InvokeAsync<IJSObjectReference>("import", "/_content/Dotnetydd.OtlpDevDashboard/js/theme.js");
         }
     }
 

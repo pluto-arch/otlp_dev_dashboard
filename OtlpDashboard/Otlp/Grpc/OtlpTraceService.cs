@@ -3,13 +3,13 @@
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Dotnetydd.OtlpDashboard.Otlp.Model;
-using Dotnetydd.OtlpDashboard.Otlp.Storage;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Storage;
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
 using OpenTelemetry.Proto.Collector.Trace.V1;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Grpc;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Grpc;
 
 public class OtlpTraceService : TraceService.TraceServiceBase
 {

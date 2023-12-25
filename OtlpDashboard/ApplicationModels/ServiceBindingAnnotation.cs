@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Net.Sockets;
 
-namespace Dotnetydd.OtlpDashboard.ApplicationModels;
+namespace Dotnetydd.OtlpDevDashboard.ApplicationModels;
 
 [DebuggerDisplay("Type = {GetType().Name,nq}, Name = {Name}")]
 public class ServiceBindingAnnotation:IResourceAnnotation

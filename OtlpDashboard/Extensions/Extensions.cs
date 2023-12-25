@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Threading.Channels;
 
-namespace Dotnetydd.OtlpDashboard.Extensions;
+namespace Dotnetydd.OtlpDevDashboard.Extensions;
 
 internal static class Extensions
 {

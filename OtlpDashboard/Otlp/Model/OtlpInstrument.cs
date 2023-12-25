@@ -3,12 +3,12 @@
 
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using Dotnetydd.OtlpDashboard.Otlp.Model.MetricValues;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model.MetricValues;
 using Google.Protobuf.Collections;
 using OpenTelemetry.Proto.Common.V1;
 using OpenTelemetry.Proto.Metrics.V1;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Model;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Model;
 
 [DebuggerDisplay("Name = {Name}, Unit = {Unit}, Type = {Type}")]
 public class OtlpInstrument

@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Dotnetydd.OtlpDashboard": {
+    "Dotnetydd.OtlpDevDashboard": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

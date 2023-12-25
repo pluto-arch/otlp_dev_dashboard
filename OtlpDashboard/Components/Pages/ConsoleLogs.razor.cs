@@ -3,13 +3,13 @@
 
 using System.Collections.Concurrent;
 using System.Diagnostics;
-using Dotnetydd.OtlpDashboard.Model;
-using Dotnetydd.OtlpDashboard.Utils;
+using Dotnetydd.OtlpDevDashboard.Model;
+using Dotnetydd.OtlpDevDashboard.Utils;
 using Microsoft.AspNetCore.Components;
 using Microsoft.FluentUI.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Dotnetydd.OtlpDashboard.Components.Pages;
+namespace Dotnetydd.OtlpDevDashboard.Components.Pages;
 
 public sealed partial class ConsoleLogs : ComponentBase, IAsyncDisposable
 {
@@ -43,8 +43,8 @@ public sealed partial class ConsoleLogs : ComponentBase, IAsyncDisposable
 
     protected override void OnInitialized()
     {
-        _noSelection = new() { Value = null, Text = Loc[nameof(OtlpDashboard.Resources.ConsoleLogs.ConsoleLogsSelectAResource)] };
-        _status = Loc[nameof(OtlpDashboard.Resources.ConsoleLogs.ConsoleLogsLoadingResources)];
+        _noSelection = new() { Value = null, Text = Loc[nameof(OtlpDevDashboard.Resources.ConsoleLogs.ConsoleLogsSelectAResource)] };
+        _status = Loc[nameof(OtlpDevDashboard.Resources.ConsoleLogs.ConsoleLogsLoadingResources)];
 
         TrackResources();
 
@@ -93,7 +93,7 @@ public sealed partial class ConsoleLogs : ComponentBase, IAsyncDisposable
             await ClearLogsAsync();
             _selectedOption = _noSelection;
             _selectedResource = null;
-            _status = Loc[nameof(OtlpDashboard.Resources.ConsoleLogs.ConsoleLogsNoResourceSelected)];
+            _status = Loc[nameof(OtlpDevDashboard.Resources.ConsoleLogs.ConsoleLogsNoResourceSelected)];
         }
     }
 
@@ -120,7 +120,7 @@ public sealed partial class ConsoleLogs : ComponentBase, IAsyncDisposable
 
                 return resource.State switch
                 {
-                    null or { Length: 0 } => $"{resourceName} ({Loc[nameof(OtlpDashboard.Resources.ConsoleLogs.ConsoleLogsUnknownState)]})",
+                    null or { Length: 0 } => $"{resourceName} ({Loc[nameof(OtlpDevDashboard.Resources.ConsoleLogs.ConsoleLogsUnknownState)]})",
                     "Running" => resourceName,
                     _ => $"{resourceName} ({resource.State})"
                 };
@@ -140,11 +140,11 @@ public sealed partial class ConsoleLogs : ComponentBase, IAsyncDisposable
 
         if (_selectedResource is null)
         {
-            _status = Loc[nameof(OtlpDashboard.Resources.ConsoleLogs.ConsoleLogsNoResourceSelected)];
+            _status = Loc[nameof(OtlpDevDashboard.Resources.ConsoleLogs.ConsoleLogsNoResourceSelected)];
         }
         else if (_logViewer is null)
         {
-            _status = Loc[nameof(OtlpDashboard.Resources.ConsoleLogs.ConsoleLogsInitializingLogViewer)];
+            _status = Loc[nameof(OtlpDevDashboard.Resources.ConsoleLogs.ConsoleLogsInitializingLogViewer)];
         }
         else
         {
@@ -159,11 +159,11 @@ public sealed partial class ConsoleLogs : ComponentBase, IAsyncDisposable
                     convertTimestampsFromUtc: _selectedResource is ContainerViewModel);
 
                 _initialisedSuccessfully = true;
-                _status = Loc[nameof(OtlpDashboard.Resources.ConsoleLogs.ConsoleLogsWatchingLogs)];
+                _status = Loc[nameof(OtlpDevDashboard.Resources.ConsoleLogs.ConsoleLogsWatchingLogs)];
 
                 // Indicate when logs finish (other than by cancellation).
                 _ = task.ContinueWith(
-                    _ => _status = Loc[nameof(OtlpDashboard.Resources.ConsoleLogs.ConsoleLogsFinishedWatchingLogs)],
+                    _ => _status = Loc[nameof(OtlpDevDashboard.Resources.ConsoleLogs.ConsoleLogsFinishedWatchingLogs)],
                     CancellationToken.None,
                     TaskContinuationOptions.NotOnCanceled,
                     TaskScheduler.Current);
@@ -172,8 +172,8 @@ public sealed partial class ConsoleLogs : ComponentBase, IAsyncDisposable
             {
                 _initialisedSuccessfully = false;
                 _status = Loc[_selectedResource is ContainerViewModel
-                    ? nameof(OtlpDashboard.Resources.ConsoleLogs.ConsoleLogsFailedToInitialize)
-                    : nameof(OtlpDashboard.Resources.ConsoleLogs.ConsoleLogsLogsNotYetAvailable)];
+                    ? nameof(OtlpDevDashboard.Resources.ConsoleLogs.ConsoleLogsFailedToInitialize)
+                    : nameof(OtlpDevDashboard.Resources.ConsoleLogs.ConsoleLogsLogsNotYetAvailable)];
             }
         }
     }
@@ -202,7 +202,7 @@ public sealed partial class ConsoleLogs : ComponentBase, IAsyncDisposable
                 }
                 else if (!string.Equals(_selectedResource.State, "Running", StringComparison.Ordinal))
                 {
-                    _status = Loc[nameof(OtlpDashboard.Resources.ConsoleLogs.ConsoleLogsFinishedWatchingLogs)];
+                    _status = Loc[nameof(OtlpDevDashboard.Resources.ConsoleLogs.ConsoleLogsFinishedWatchingLogs)];
                 }
             }
         }

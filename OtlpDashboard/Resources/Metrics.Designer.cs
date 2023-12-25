@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Dotnetydd.OtlpDashboard.Resources {
+namespace Dotnetydd.OtlpDevDashboard.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Dotnetydd.OtlpDashboard.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Dotnetydd.OtlpDashboard.Resources.Metrics", typeof(Metrics).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Dotnetydd.OtlpDevDashboard.Resources.Metrics", typeof(Metrics).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -1,12 +1,14 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Dotnetydd.OtlpDashboard.ConsoleLogs;
-using Dotnetydd.OtlpDashboard.Model;
-using Dotnetydd.OtlpDashboard.Utils;
+using Dotnetydd.OtlpDevDashboard.ConsoleLogs;
+using Dotnetydd.OtlpDevDashboard.Model;
+using Dotnetydd.OtlpDevDashboard.Utils;
+using Dotnetydd.OtlpDevDashboard.ConsoleLogs;
+using Dotnetydd.OtlpDevDashboard.Utils;
 using Microsoft.JSInterop;
 
-namespace Dotnetydd.OtlpDashboard.Components;
+namespace Dotnetydd.OtlpDevDashboard.Components;
 
 /// <summary>
 /// A log viewing UI component that shows a live view of a log, with syntax highlighting and automatic scrolling.
@@ -21,7 +23,7 @@ public sealed partial class LogViewer
     {
         if (firstRender)
         {
-            _jsModule ??= await JS.InvokeAsync<IJSObjectReference>("import", "/_content/Dotnetydd.OtlpDashboard/Components/Controls/LogViewer.razor.js");
+            _jsModule ??= await JS.InvokeAsync<IJSObjectReference>("import", "/_content/Dotnetydd.OtlpDevDashboard/Components/Controls/LogViewer.razor.js");
 
             _whenDomReady.TrySetResult();
         }

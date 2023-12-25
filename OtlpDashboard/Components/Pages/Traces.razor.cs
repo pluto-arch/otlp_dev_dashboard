@@ -2,17 +2,17 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Globalization;
-using Dotnetydd.OtlpDashboard.Model;
-using Dotnetydd.OtlpDashboard.Model.Otlp;
-using Dotnetydd.OtlpDashboard.Otlp.Model;
-using Dotnetydd.OtlpDashboard.Otlp.Storage;
-using Dotnetydd.OtlpDashboard.Resources;
+using Dotnetydd.OtlpDevDashboard.Model;
+using Dotnetydd.OtlpDevDashboard.Model.Otlp;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Storage;
+using Dotnetydd.OtlpDevDashboard.Resources;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using Microsoft.FluentUI.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Dotnetydd.OtlpDashboard.Components.Pages;
+namespace Dotnetydd.OtlpDevDashboard.Components.Pages;
 
 public partial class Traces
 {
@@ -45,11 +45,11 @@ public partial class Traces
         var count = applicationSpans.Count();
         var errorCount = applicationSpans.Count(s => s.Status == OtlpSpanStatusCode.Error);
 
-        var tooltip = string.Format(CultureInfo.InvariantCulture, Loc[nameof(OtlpDashboard.Resources.Traces.TracesResourceSpans)], GetResourceName(applicationSpans.Key));
-        tooltip += Environment.NewLine + string.Format(CultureInfo.InvariantCulture, Loc[nameof(OtlpDashboard.Resources.Traces.TracesTotalTraces)], count);
+        var tooltip = string.Format(CultureInfo.InvariantCulture, Loc[nameof(OtlpDevDashboard.Resources.Traces.TracesResourceSpans)], GetResourceName(applicationSpans.Key));
+        tooltip += Environment.NewLine + string.Format(CultureInfo.InvariantCulture, Loc[nameof(OtlpDevDashboard.Resources.Traces.TracesTotalTraces)], count);
         if (errorCount > 0)
         {
-            tooltip += Environment.NewLine + string.Format(CultureInfo.InvariantCulture, Loc[nameof(OtlpDashboard.Resources.Traces.TracesTotalErroredTraces)], errorCount);
+            tooltip += Environment.NewLine + string.Format(CultureInfo.InvariantCulture, Loc[nameof(OtlpDevDashboard.Resources.Traces.TracesTotalErroredTraces)], errorCount);
         }
 
         return tooltip;

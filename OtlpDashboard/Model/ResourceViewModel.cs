@@ -2,9 +2,9 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Collections.Immutable;
-using Dotnetydd.OtlpDashboard.Utils;
+using Dotnetydd.OtlpDevDashboard.Utils;
 
-namespace Dotnetydd.OtlpDashboard.Model;
+namespace Dotnetydd.OtlpDevDashboard.Model;
 
 /// <summary>
 /// Base class for immutable snapshots of resource state at a point in time.

@@ -3,15 +3,15 @@
 
 using System.Diagnostics;
 using System.Globalization;
-using Dotnetydd.OtlpDashboard.Model;
-using Dotnetydd.OtlpDashboard.Otlp.Model;
-using Dotnetydd.OtlpDashboard.Otlp.Model.MetricValues;
-using Dotnetydd.OtlpDashboard.Resources;
+using Dotnetydd.OtlpDevDashboard.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model;
+using Dotnetydd.OtlpDevDashboard.Otlp.Model.MetricValues;
+using Dotnetydd.OtlpDevDashboard.Resources;
 using Humanizer;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Dotnetydd.OtlpDashboard.Components;
+namespace Dotnetydd.OtlpDevDashboard.Components;
 
 public partial class PlotlyChart : ComponentBase
 {

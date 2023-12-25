@@ -4,7 +4,7 @@
 using System.Collections.Concurrent;
 using System.Globalization;
 
-namespace Dotnetydd.OtlpDashboard.Otlp.Model;
+namespace Dotnetydd.OtlpDevDashboard.Otlp.Model;
 
 public sealed class GeneratedColor
 {

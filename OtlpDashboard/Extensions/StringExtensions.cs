@@ -3,7 +3,7 @@
 
 using System.Text;
 
-namespace Dotnetydd.OtlpDashboard.Extensions;
+namespace Dotnetydd.OtlpDevDashboard.Extensions;
 
 internal static class StringExtensions
 {

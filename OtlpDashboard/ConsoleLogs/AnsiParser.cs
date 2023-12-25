@@ -4,7 +4,7 @@
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace Dotnetydd.OtlpDashboard.ConsoleLogs;
+namespace Dotnetydd.OtlpDevDashboard.ConsoleLogs;
 
 public class AnsiParser
 {
