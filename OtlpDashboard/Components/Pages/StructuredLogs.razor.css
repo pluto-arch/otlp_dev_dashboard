@@ -1,0 +1,61 @@
+::deep.logs-layout {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    height: 100%;
+    width: 100%;
+    grid-template-areas:
+        "head"
+        "toolbar"
+        "main";
+    gap: calc(var(--design-unit) * 2px);
+}
+
+::deep.logs-layout > h1 {
+    grid-area: head;
+}
+
+::deep.logs-layout > fluent-toolbar {
+    grid-area: toolbar;
+}
+
+::deep.logs-layout > .summary-details-container {
+    grid-area: main;
+}
+
+::deep .log-row-critical {
+    background-color: var(--log-critical);
+}
+
+::deep .log-row-error {
+    background-color: var(--log-error);
+}
+
+::deep .log-row-warning {
+    background-color: var(--log-warning);
+}
+
+::deep .logs-severity-icon {
+    vertical-align: text-bottom;
+    margin-right: 3px;
+}
+
+::deep .logs-summary-layout {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    height: 100%;
+    width: 100%;
+    grid-template-areas:
+        "main"
+        "foot";
+    gap: calc(var(--design-unit) * 2px);
+}
+
+::deep .logs-summary-layout > .logs-grid-container {
+    grid-area: main;
+    overflow: auto;
+}
+
+::deep .logs-summary-layout > .total-items-footer {
+    grid-area: foot;
+    padding-bottom: calc(var(--design-unit) * 2px);
+}

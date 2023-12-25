@@ -1,0 +1,125 @@
+﻿@page "/Trace/{traceId}"
+@page "/Trace/{traceId}/Span/{spanId}"
+
+@using Dotnetydd.OtlpDashboard.Model
+@using Dotnetydd.OtlpDashboard.Model.Otlp
+@using Dotnetydd.OtlpDashboard.Otlp.Model
+@using System.Globalization
+@using Dotnetydd.OtlpDashboard.Resources
+@inject IStringLocalizer<OtlpDashboard.Resources.TraceDetail> Loc
+@inject IStringLocalizer<ControlsStrings> ControlStringsLoc
+@inject IResourceService DashboardService
+
+<PageTitle>@string.Format(Loc[nameof(OtlpDashboard.Resources.TraceDetail.TraceDetailPageTitle)], DashboardService.ApplicationName)</PageTitle>
+
+@if (_trace != null)
+{
+    <div class="trace-detail-layout">
+        <div class="trace-detail-header page-header">
+            <h1 style="display:inline-block">@GetResourceName(_trace.FirstSpan.Source): @_trace.FirstSpan.Name</h1>
+            <span class="trace-id">@OtlpHelpers.ToShortenedId(_trace.TraceId)</span>
+        </div>
+        <FluentToolbar Orientation="Orientation.Horizontal">
+            <div>
+                @Loc[nameof(OtlpDashboard.Resources.TraceDetail.TraceDetailTraceStartHeader)] <strong>@_trace.FirstSpan.StartTime.ToString("MMMM d yyyy"), @OtlpHelpers.FormatTimeStamp(_trace.FirstSpan.StartTime)</strong>
+            </div>
+            <FluentDivider Role="DividerRole.Presentation" Orientation="Orientation.Vertical" />
+            <div>
+                @Loc[nameof(OtlpDashboard.Resources.TraceDetail.TraceDetailDurationHeader)] <strong>@DurationFormatter.FormatDuration(_trace.Duration)</strong>
+            </div>
+            <FluentDivider Role="DividerRole.Presentation" Orientation="Orientation.Vertical" />
+            <div>
+                @Loc[nameof(OtlpDashboard.Resources.TraceDetail.TraceDetailResourcesHeader)] <strong>@_trace.Spans.GroupBy(s => s.Source).Count()</strong>
+            </div>
+            <FluentDivider Role="DividerRole.Presentation" Orientation="Orientation.Vertical" />
+            <div>
+                @Loc[nameof(OtlpDashboard.Resources.TraceDetail.TraceDetailDepthHeader)] <strong>@_maxDepth</strong>
+            </div>
+            <FluentDivider Role="DividerRole.Presentation" Orientation="Orientation.Vertical" />
+            <div>
+                @Loc[nameof(OtlpDashboard.Resources.TraceDetail.TraceDetailTotalSpansHeader)] <strong>@_trace.Spans.Count</strong>
+            </div>
+            <FluentAnchor slot="end" Appearance="Appearance.Lightweight" Href="@($"/StructuredLogs?traceId={_trace.TraceId}")">@ControlStringsLoc[nameof(ControlsStrings.ViewLogsLink)]</FluentAnchor>
+            <FluentDivider slot="end" Role="DividerRole.Presentation" Orientation="Orientation.Vertical" />
+                <FluentAnchor slot="end" Appearance="Appearance.Lightweight" Href="@($"/Traces")">@Loc[nameof(OtlpDashboard.Resources.TraceDetail.TraceDetailBackButtonText)]</FluentAnchor>
+        </FluentToolbar>
+
+        <SummaryDetailsView ShowDetails="SelectedSpan is not null" OnDismiss="() => ClearSelectedSpan()" ViewKey="TraceDetail">
+            <DetailsTitleTemplate>
+                @{ var shortedSpanId = OtlpHelpers.ToShortenedId(SelectedSpan!.Span.SpanId); }
+                <div class="span-details-title" title="@($"{SelectedSpan!.Title} ({shortedSpanId})")">
+                    @SelectedSpan!.Title
+                    <span class="span-id">@shortedSpanId</span>
+                </div>
+            </DetailsTitleTemplate>
+            <Summary>
+                <FluentDataGrid Class="trace-view-grid" ResizableColumns="true" ItemsProvider="@GetData" TGridItem="SpanWaterfallViewModel" RowClass="@GetRowClass" GridTemplateColumns="2fr 6fr">
+                    <TemplateColumn Title="Name">
+                        <div class="col-long-content" title="@context.GetTooltip()" @onclick="() => OnShowProperties(context)">
+                            <span class="span-name-container" style="@($"margin-left: {(context.Depth - 1) * 15}px; border-left-color: {ColorGenerator.Instance.GetColorHexByKey(GetResourceName(context.Span.Source))};")">
+                                @if (context.IsError)
+                                {
+                                    <FluentIcon Icon="Icons.Filled.Size12.ErrorCircle" Color="Color.Error" Class="trace-tag-icon" />
+                                }
+                                @GetResourceName(context.Span.Source)
+                                @if (context.HasUninstrumentedPeer)
+                                {
+                                    <span class="uninstrumented-peer">
+                                        <FluentIcon Style="@($"fill: {ColorGenerator.Instance.GetColorHexByKey(context.UninstrumentedPeer)};")" Icon="Icons.Filled.Size16.ArrowCircleRight" Class="uninstrumented-peer-icon" />
+                                        @context.UninstrumentedPeer
+                                    </span>
+                                }
+                                <span class="span-row-name">@context.GetDisplaySummary()</span>
+                            </span>
+                        </div>
+                    </TemplateColumn>
+                    <TemplateColumn>
+                        <HeaderCellItemTemplate>
+                            <div class="ticks">
+                                <div class="tick" style="grid-column: 1;"></div>
+                                <span class="tick-label" style="grid-column: 1;">@DurationFormatter.FormatDuration(TimeSpan.Zero)</span>
+
+                                <div class="tick" style="grid-column: 2;"></div>
+                                <span class="tick-label" style="grid-column: 2;">@DurationFormatter.FormatDuration(_trace.Duration / 4)</span>
+
+                                <div class="tick" style="grid-column: 3;"></div>
+                                <span class="tick-label" style="grid-column: 3;">@DurationFormatter.FormatDuration(_trace.Duration / 4 * 2)</span>
+
+                                <div class="tick" style="grid-column: 4;"></div>
+                                <span class="tick-label" style="grid-column: 4;">@DurationFormatter.FormatDuration(_trace.Duration / 4 * 3)</span>
+
+                                <span class="tick-label end-tick" style="grid-column: 4;">@DurationFormatter.FormatDuration(_trace.Duration)</span>
+                                <div class="tick" style="grid-column: 5;"></div>
+                            </div>
+                        </HeaderCellItemTemplate>
+                        <ChildContent>
+                            <div class="ticks" @onclick="() => OnShowProperties(context)">
+                                <div class="span-container" style="grid-template-columns: @context.LeftOffset.ToString("F2", CultureInfo.InvariantCulture)% @context.Width.ToString("F2", CultureInfo.InvariantCulture)% min-content;">
+                                    <div class="span-bar" style="grid-column: 2; background: @ColorGenerator.Instance.GetColorHexByKey(GetResourceName(context.Span.Source));"></div>
+                                    <div class="span-bar-label @(context.LabelIsRight ? "span-bar-label-right" : "span-bar-label-left")">
+                                        <span class="span-bar-label-detail">@GetResourceName(context.Span.Source): @context.GetDisplaySummary()</span>
+                                        <span>@DurationFormatter.FormatDuration(context.Span.Duration)</span>
+                                    </div>
+                                </div>
+                                <div class="tick" style="grid-column: 1;"></div>
+                                <div class="tick" style="grid-column: 2;"></div>
+                                <div class="tick" style="grid-column: 3;"></div>
+                                <div class="tick" style="grid-column: 4;"></div>
+                                <div class="tick" style="grid-column: 5;"></div>
+                            </div>
+                        </ChildContent>
+                    </TemplateColumn>
+                </FluentDataGrid>
+            </Summary>
+            <Details>
+                <SpanDetails ViewModel="SelectedSpan" />
+            </Details>
+        </SummaryDetailsView>
+    </div>
+}
+else
+{
+    <div class="empty-content">
+        <FluentIcon Icon="Icons.Regular.Size24.GanttChart" /> &nbsp; @Loc[nameof(OtlpDashboard.Resources.TraceDetail.TraceDetailTraceNotFound)]
+    </div>
+}

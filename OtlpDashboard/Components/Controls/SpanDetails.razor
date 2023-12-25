@@ -1,0 +1,46 @@
+﻿@using Dotnetydd.OtlpDashboard.Model
+@using Dotnetydd.OtlpDashboard.Otlp.Model
+@using Dotnetydd.OtlpDashboard.Resources
+@inject IStringLocalizer<ControlsStrings> Loc
+
+<div class="span-details-layout">
+    <FluentToolbar Orientation="Orientation.Horizontal">
+        <div>
+            @((MarkupString)string.Format(ControlsStrings.SpanDetailsService, ViewModel.Span.Source.ApplicationName))
+        </div>
+        <FluentDivider Role="DividerRole.Presentation" Orientation="Orientation.Vertical" />
+        <div>
+            @((MarkupString)string.Format(ControlsStrings.SpanDetailsDuration, DurationFormatter.FormatDuration(ViewModel.Span.Duration)))
+        </div>
+        <FluentDivider Role="DividerRole.Presentation" Orientation="Orientation.Vertical" />
+        <div>
+            @((MarkupString)string.Format(ControlsStrings.SpanDetailsStartTime, DurationFormatter.FormatDuration(ViewModel.Span.StartTime - ViewModel.Span.Trace.FirstSpan.StartTime)))
+        </div>
+        <FluentAnchor slot="end" Appearance="Appearance.Lightweight" Href="@($"/StructuredLogs?spanId={ViewModel.Span.SpanId}")">@Loc[nameof(ControlsStrings.ViewLogsLink)]</FluentAnchor>
+        <FluentDivider slot="end" Role="DividerRole.Presentation" Orientation="Orientation.Vertical" />
+        <FluentSearch Placeholder="@Loc[nameof(ControlsStrings.FilterPlaceholder)]"
+                      Immediate="true"
+                      Autofocus="true"
+                      @bind-Value="_filter"
+                      slot="end" />
+    </FluentToolbar>
+    <div class="property-grid-container">
+        <PropertyGrid TItem="SpanPropertyViewModel"
+                      Items="@FilteredItems"
+                      GridTemplateColumns="1fr 2fr"
+                      NameColumnValue="(vm) => vm.Name"
+                      ValueColumnValue="(vm) => vm.Value"
+                      NameSort="_nameSort"
+                      ValueSort="_valueSort"
+                      HighlightText="@_filter" />
+        <h4>Application</h4>
+        <PropertyGrid TItem="SpanPropertyViewModel"
+                      Items="@FilteredApplicationItems"
+                      GridTemplateColumns="1fr 2fr"
+                      NameColumnValue="(vm) => vm.Name"
+                      ValueColumnValue="(vm) => vm.Value"
+                      NameSort="_nameSort"
+                      ValueSort="_valueSort"
+                      HighlightText="@_filter" />
+    </div>
+</div>

@@ -1,0 +1,14 @@
+::deep .resource-state-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+::deep .resource-error-badge {
+    padding: 0 3px;
+    cursor: pointer;
+}
+
+::deep fluent-toolbar > h1 {
+    padding-left: calc(var(--design-unit) * 1px);
+}

@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <base href="/" />
+    <link rel="icon" type="image/x-icon" href="_content/Dotnetydd.OtlpDashboard/favicon.ico" />
+    <link rel="stylesheet" href="_content/Microsoft.FluentUI.AspNetCore.Components/css/reboot.css" />
+    <link rel="stylesheet" href="_content/Microsoft.FluentUI.AspNetCore.Components/Microsoft.FluentUI.AspNetCore.Components.bundle.scp.css" />
+    <link rel="stylesheet" href="_content/Dotnetydd.OtlpDashboard/css/app.css" />
+    <link rel="stylesheet" href="_content/Dotnetydd.OtlpDashboard/Dotnetydd.OtlpDashboard.bundle.scp.css" />
+    <HeadOutlet @rendermode="@(new InteractiveServerRenderMode(prerender: false))" />
+    <!-- Make the body background dark if dark mode will be enabled to prevent a flash of white
+         before fully rendered. This value is from --neutral-fill-layer-rest, but that custom
+         property isn't available at this point. -->
+    <style>@@media (prefers-color-scheme: dark) { body { background-color: #272727; } }</style>
+</head>
+
+<body class="before-upgrade">
+    <Routes @rendermode="@(new InteractiveServerRenderMode(prerender: false))" />
+    <script src="_framework/blazor.web.js"></script>
+    <script src="_content/Dotnetydd.OtlpDashboard/js/app.js"></script>
+    <script src="_content/Dotnetydd.OtlpDashboard/js/theme.js" type="module"></script>
+    <script src="_content/Dotnetydd.OtlpDashboard/js/plotly-2.26.0.min.js"></script>
+</body>
+</html>

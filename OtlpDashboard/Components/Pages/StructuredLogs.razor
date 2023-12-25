@@ -1,0 +1,111 @@
+﻿@page "/StructuredLogs/{applicationInstanceId?}"
+@using Dotnetydd.OtlpDashboard.Model
+@using Dotnetydd.OtlpDashboard.Model.Otlp
+@using Dotnetydd.OtlpDashboard.Otlp.Model
+@using Microsoft.Extensions.Logging
+@using System.Web
+@using Dotnetydd.OtlpDashboard.Resources
+@inject NavigationManager NavigationManager
+@inject IResourceService resourceService
+@inject IJSRuntime JS
+@implements IDisposable
+@inject IStringLocalizer<Dotnetydd.OtlpDashboard.Resources.StructuredLogs> Loc
+@inject IStringLocalizer<ControlsStrings> ControlsStringsLoc
+
+<PageTitle>@string.Format(Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsPageTitle)], resourceService.ApplicationName)</PageTitle>
+
+<div class="logs-layout">
+        <h1 class="page-header">@Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsHeader)]</h1>
+    <FluentToolbar Orientation="Orientation.Horizontal">
+        <FluentSelect TOption="SelectViewModel<string>"
+                      Items="@_applicationViewModels"
+                      OptionText="@(c => c.Name)"
+                      @bind-SelectedOption="_selectedApplication"
+                      @bind-SelectedOption:after="HandleSelectedApplicationChangedAsync"
+                      AriaLabel="@ControlsStringsLoc[nameof(ControlsStrings.SelectAnApplication)]"/>
+        <FluentSearch @bind-Value="_filter"
+                      @oninput="HandleFilter"
+                      @bind-Value:after="HandleClear"
+                      Placeholder="@ControlsStringsLoc[nameof(ControlsStrings.FilterPlaceholder)]"
+                      title="@Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsMessageFilter)]"
+                      slot="end" />
+        <FluentDivider slot="end" Role="DividerRole.Presentation" Orientation="Orientation.Vertical" />
+        <div title="@Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsMinimumLogFilter)]" slot="end" style="display: flex;align-items: center;">
+            <span>Level:</span>
+            <FluentDivider Role="DividerRole.Presentation" Orientation="Orientation.Vertical" />
+            <FluentSelect TOption="SelectViewModel<LogLevel?>"
+                          Items="@_logLevels"
+                          OptionText="@(c => c.Name)"
+                          @bind-SelectedOption="_selectedLogLevel"
+                          @bind-SelectedOption:after="HandleSelectedLogLevelChangedAsync"
+                          Width="120px"
+                          Style="min-width: auto;"
+                          AriaLabel="@Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsSelectMinimumLogLevel)]" />
+        </div>
+        <FluentDivider slot="end" Role="DividerRole.Presentation" Orientation="Orientation.Vertical" />
+        <FluentLabel slot="end">@Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsFilters)]</FluentLabel>
+        @if (ViewModel.Filters.Count == 0)
+        {
+            <span slot="end">@Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsNoFilters)]</span>
+        }
+        else
+        {
+            foreach (var filter in ViewModel.Filters)
+            {
+                <FluentButton slot="end" Appearance="Appearance.Outline" OnClick="() => OpenFilterAsync(filter)">@filter.FilterText</FluentButton>
+                <FluentDivider slot="end" Role="DividerRole.Presentation" Orientation="Orientation.Vertical" />
+            }
+        }
+        <FluentButton slot="end" Appearance="Appearance.Stealth" aria-label="Add Filter" OnClick="() => OpenFilterAsync(null)"><FluentIcon Value="@(new Icons.Regular.Size16.Filter())" /></FluentButton>
+    </FluentToolbar>
+    <SummaryDetailsView DetailsTitle="@Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsEntryDetails)]" ShowDetails="SelectedLogEntryProperties is not null" OnDismiss="() => ClearSelectedLogEntry()">
+        <Summary>
+            <div class="logs-summary-layout">
+                <div class="logs-grid-container continuous-scroll-overflow">
+                    <FluentDataGrid Virtualize="true" RowClass="@GetRowClass" GenerateHeader="GenerateHeaderOption.Sticky" ItemSize="46" ResizableColumns="true" ItemsProvider="@GetData" TGridItem="OtlpLogEntry" GridTemplateColumns="1fr 1fr 1fr 5fr 0.8fr 0.8fr">
+                        <ChildContent>
+                            <TemplateColumn Title="@Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsResourceColumnHeader)]" Tooltip="true" TooltipText="@(e => GetResourceName(e.Application))">
+                                <span style="padding-left:5px; border-left-width: 5px; border-left-style: solid; border-left-color: @(ColorGenerator.Instance.GetColorHexByKey(GetResourceName(context.Application)));">
+                                    @GetResourceName(context.Application)
+                                </span>
+                            </TemplateColumn>
+                            <TemplateColumn Title="@Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsLevelColumnHeader)]">
+                                @if (context.Severity is LogLevel.Error or LogLevel.Critical)
+                                {
+                                    <FluentIcon Icon="Icons.Filled.Size16.ErrorCircle" Color="Color.Error" Class="logs-severity-icon" />
+                                }
+                                else if (context.Severity is LogLevel.Warning)
+                                {
+                                    <FluentIcon Icon="Icons.Filled.Size16.Warning" Color="Color.Warning" Class="logs-severity-icon" />
+                                }
+                                @context.Severity
+                            </TemplateColumn>
+                            <PropertyColumn Title="@Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsTimestampColumnHeader)]" Property="@(context => OtlpHelpers.FormatTimeStamp(context.TimeStamp))" Tooltip="true" />
+                            <TemplateColumn Title="@Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsMessageColumnHeader)]" Tooltip="true" TooltipText="(e) => e.Message">
+                                <FluentHighlighter HighlightedText="@(ViewModel.FilterText)" Text="@context.Message" />
+                            </TemplateColumn>
+                            <TemplateColumn Title="@Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsTraceColumnHeader)]">
+                                @if (!string.IsNullOrEmpty(context.TraceId))
+                                {
+                                    <a href="@($"/Trace/{HttpUtility.UrlEncode(context.TraceId)}")" class="long-inner-content">
+                                        @OtlpHelpers.ToShortenedId(context.TraceId)
+                                    </a>
+                                }
+                            </TemplateColumn>
+                            <TemplateColumn Title="@Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsDetailsColumnHeader)]">
+                                <FluentButton Appearance="Appearance.Lightweight" OnClick="() => OnShowProperties(context)">@ControlsStringsLoc[nameof(ControlsStrings.ViewAction)]</FluentButton>
+                            </TemplateColumn>
+                        </ChildContent>
+                        <EmptyContent>
+                                <FluentIcon Icon="Icons.Regular.Size24.SlideTextSparkle" />&nbsp;@Loc[nameof(OtlpDashboard.Resources.StructuredLogs.StructuredLogsNoLogsFound)]
+                        </EmptyContent>
+                    </FluentDataGrid>
+                </div>
+                <TotalItemsFooter @ref="_totalItemsFooter" />
+            </div>
+        </Summary>
+        <Details>
+            <StructuredLogDetails Items="@SelectedLogEntryProperties" />
+        </Details>
+    </SummaryDetailsView>
+</div>

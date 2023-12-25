@@ -1,0 +1,12 @@
+﻿@namespace Dotnetydd.OtlpDashboard.Components
+@using System.Text
+@using Dotnetydd.OtlpDashboard.ConsoleLogs
+@using Dotnetydd.OtlpDashboard.Model
+@using System.Collections.Concurrent
+@inject IJSRuntime JS
+@implements IAsyncDisposable
+
+<div class="log-overflow">
+    <div class="log-container" id="logContainer">
+    </div>
+</div>

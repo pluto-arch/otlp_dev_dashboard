@@ -1,0 +1,44 @@
+﻿@using Dotnetydd.OtlpDashboard.Resources
+@inject IJSRuntime JS
+@inject IStringLocalizer<ControlsStrings> Loc
+
+<div class="@GetContainerClass()">
+    @if (EnableMasking && IsMasked)
+    {
+        <span class="cellText">
+            &#x25cf;&#x25cf;&#x25cf;&#x25cf;&#x25cf;&#x25cf;&#x25cf;&#x25cf;
+        </span>
+    }
+    else if (EnableHighlighting)
+    {
+        <span class="cellText" title="@(ToolTip ?? Value)">
+            <FluentHighlighter HighlightedText="@HighlightText"
+                               Text="@Value" />
+            @ContentAfterValue
+        </span>
+    }
+    else
+    {
+        <span class="cellText" title="@(ToolTip ?? Value)">
+            @(MaxDisplayLength.HasValue ? TrimLength(Value) : Value)
+            @ContentAfterValue
+        </span>
+    }
+    @if (EnableMasking)
+    {
+        <FluentButton Appearance="Appearance.Lightweight"
+                      IconEnd="@(IsMasked ? _unmaskIcon : _maskIcon)"
+                      Title="@(IsMasked ? Loc[nameof(ControlsStrings.GridValueMaskShowValue)] : Loc[nameof(ControlsStrings.GridValueMaskHideValue)])"
+                      OnClick="ToggleMaskStateAsync"
+                      aria-label="@(IsMasked ? Loc[nameof(ControlsStrings.GridValueMaskShowValue)] : Loc[nameof(ControlsStrings.GridValueMaskHideValue)])" />
+    }
+    <FluentButton Appearance="Appearance.Lightweight"
+                  Id="@_anchorId"
+                  Class="defaultHidden"
+                  @onclick="@(() => CopyTextToClipboardAsync(ValueToCopy ?? Value, _anchorId))"
+                  aria-label="@Loc[nameof(ControlsStrings.GridValueCopyToClipboard)]">
+        <FluentIcon Class="copy-icon" Style="display:inline;" Icon="Icons.Regular.Size16.Copy" />
+        <FluentIcon Class="checkmark-icon" Style="display:none;" Icon="Icons.Regular.Size16.Checkmark" />
+    </FluentButton>
+    <FluentTooltip Anchor="@_anchorId" Position="TooltipPosition.Top">@PreCopyToolTip</FluentTooltip>
+</div>

@@ -1,0 +1,24 @@
+﻿@using Dotnetydd.OtlpDashboard.Resources
+@namespace Dotnetydd.OtlpDashboard.Components
+@inject IStringLocalizer<Columns> Loc
+
+@if (UnviewedCount > 0)
+{
+    <div @onclick="OnClick" class="resource-error-badge">
+        <FluentBadge title="@string.Format(Loc[UnviewedCount == 1 ? nameof(Columns.UnreadLogErrorsBadgeErrorLog) : nameof(Columns.UnreadLogErrorsBadgeErrorLogs)], UnviewedCount)"
+                     Appearance="Appearance.Accent"
+                     Circular="true"
+                     Fill="error"
+                     slot="end">
+            @((UnviewedCount > 9) ? "9+" : UnviewedCount.ToString())
+        </FluentBadge>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+    [Parameter]
+    public int UnviewedCount { get; set; }
+}
